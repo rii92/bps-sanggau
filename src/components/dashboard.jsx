@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { Users, Filter, Menu, X } from 'lucide-react';
 
@@ -45,17 +45,17 @@ const PopulationDashboard = () => {
     <div className="min-h-screen bg-gray-50">
       {/* Header - Fixed at top */}
       <div className="sticky top-0 z-50 bg-white shadow-md">
-        <div className="max-w-7xl mx-auto">
-          <div className="p-4 flex items-center justify-between">
-            <h1 className="text-xl md:text-3xl font-bold text-gray-900 truncate">DAG.DIG.DUG.SER</h1>
+        <div className="mx-auto max-w-7xl">
+          <div className="flex items-center justify-between p-4">
+            <h1 className="text-xl font-bold text-gray-900 truncate md:text-3xl">DAG.DIG.DUG.SER</h1>
             <div className="flex items-center gap-4">
-              <div className="hidden md:flex items-center gap-2">
+              <div className="items-center hidden gap-2 md:flex">
                 <img src="https://sanggaukab.bps.go.id/_next/image?url=%2Fassets%2Flogo-bps.png&w=1080&q=75" alt="Logo" className="h-8 md:h-10" />
-                <span className="text-sm md:text-lg font-semibold">Kabupaten Sanggau</span>
+                <span className="text-sm font-semibold md:text-lg">Kabupaten Sanggau</span>
               </div>
               <button 
                 onClick={() => setIsFilterOpen(!isFilterOpen)}
-                className="md:hidden p-2 rounded-lg hover:bg-gray-100"
+                className="p-2 rounded-lg md:hidden hover:bg-gray-100"
               >
                 {isFilterOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
@@ -64,21 +64,21 @@ const PopulationDashboard = () => {
 
           {/* Filter Panel */}
           <div className={`${isFilterOpen ? 'block' : 'hidden'} md:block border-t md:border-t-0 p-4 bg-white`}>
-            <div className="max-w-7xl mx-auto space-y-4">
+            <div className="mx-auto space-y-4 max-w-7xl">
               <div className="flex items-center gap-2 mb-4">
-                <Filter className="h-5 w-5 text-gray-500" />
+                <Filter className="w-5 h-5 text-gray-500" />
                 <span className="font-medium">Filters</span>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {/* Year Range Selection */}
                 <div className="flex flex-wrap gap-4">
                   <div className="w-full sm:w-auto">
-                    <label className="block text-sm text-gray-600 mb-1">Start Year</label>
+                    <label className="block mb-1 text-sm text-gray-600">Start Year</label>
                     <select 
                       value={startYear}
                       onChange={(e) => setStartYear(e.target.value)}
-                      className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                      className="w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500"
                     >
                       {fullData.map(item => (
                         <option key={item.year} value={item.year}>{item.year}</option>
@@ -87,11 +87,11 @@ const PopulationDashboard = () => {
                   </div>
 
                   <div className="w-full sm:w-auto">
-                    <label className="block text-sm text-gray-600 mb-1">End Year</label>
+                    <label className="block mb-1 text-sm text-gray-600">End Year</label>
                     <select 
                       value={endYear}
                       onChange={(e) => setEndYear(e.target.value)}
-                      className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                      className="w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500"
                     >
                       {fullData.map(item => (
                         <option key={item.year} value={item.year}>{item.year}</option>
@@ -101,13 +101,13 @@ const PopulationDashboard = () => {
                 </div>
 
                 {/* Metrics Selection */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                   <label className="flex items-center space-x-2">
                     <input
                       type="checkbox"
                       checked={selectedMetrics.total}
                       onChange={() => handleMetricToggle('total')}
-                      className="rounded border-gray-300 text-blue-600"
+                      className="text-blue-600 border-gray-300 rounded"
                     />
                     <span className="text-sm">Total</span>
                   </label>
@@ -116,7 +116,7 @@ const PopulationDashboard = () => {
                       type="checkbox"
                       checked={selectedMetrics.male}
                       onChange={() => handleMetricToggle('male')}
-                      className="rounded border-gray-300 text-blue-600"
+                      className="text-blue-600 border-gray-300 rounded"
                     />
                     <span className="text-sm">Male</span>
                   </label>
@@ -125,7 +125,7 @@ const PopulationDashboard = () => {
                       type="checkbox"
                       checked={selectedMetrics.female}
                       onChange={() => handleMetricToggle('female')}
-                      className="rounded border-gray-300 text-blue-600"
+                      className="text-blue-600 border-gray-300 rounded"
                     />
                     <span className="text-sm">Female</span>
                   </label>
@@ -134,7 +134,7 @@ const PopulationDashboard = () => {
                       type="checkbox"
                       checked={selectedMetrics.ratio}
                       onChange={() => handleMetricToggle('ratio')}
-                      className="rounded border-gray-300 text-blue-600"
+                      className="text-blue-600 border-gray-300 rounded"
                     />
                     <span className="text-sm">Ratio</span>
                   </label>
@@ -143,7 +143,7 @@ const PopulationDashboard = () => {
                       type="checkbox"
                       checked={selectedMetrics.growth}
                       onChange={() => handleMetricToggle('growth')}
-                      className="rounded border-gray-300 text-blue-600"
+                      className="text-blue-600 border-gray-300 rounded"
                     />
                     <span className="text-sm">Growth</span>
                   </label>
@@ -155,39 +155,39 @@ const PopulationDashboard = () => {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto p-4 space-y-6 mt-4">
+      <div className="p-4 mx-auto mt-4 space-y-6 max-w-7xl">
         {/* Stats Cards */}
         {selectedMetrics.total && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div className="bg-white p-4 rounded-lg shadow-sm">
-              <div className="flex justify-between items-center">
-                <h3 className="text-base md:text-lg font-medium">Total Penduduk</h3>
-                <Users className="h-5 w-5 text-blue-600" />
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="p-4 bg-white rounded-lg shadow-sm">
+              <div className="flex items-center justify-between">
+                <h3 className="text-base font-medium md:text-lg">Total Penduduk</h3>
+                <Users className="w-5 h-5 text-blue-600" />
               </div>
-              <p className="text-2xl md:text-3xl font-bold text-blue-600 mt-2">
+              <p className="mt-2 text-2xl font-bold text-blue-600 md:text-3xl">
                 {filteredData[filteredData.length - 1].total.toLocaleString()}
               </p>
             </div>
 
             {selectedMetrics.male && (
-              <div className="bg-white p-4 rounded-lg shadow-sm">
-                <div className="flex justify-between items-center">
-                  <h3 className="text-base md:text-lg font-medium">Laki-laki</h3>
-                  <Users className="h-5 w-5 text-indigo-600" />
+              <div className="p-4 bg-white rounded-lg shadow-sm">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-base font-medium md:text-lg">Laki-laki</h3>
+                  <Users className="w-5 h-5 text-indigo-600" />
                 </div>
-                <p className="text-2xl md:text-3xl font-bold text-indigo-600 mt-2">
+                <p className="mt-2 text-2xl font-bold text-indigo-600 md:text-3xl">
                   {filteredData[filteredData.length - 1].male.toLocaleString()}
                 </p>
               </div>
             )}
 
             {selectedMetrics.female && (
-              <div className="bg-white p-4 rounded-lg shadow-sm">
-                <div className="flex justify-between items-center">
-                  <h3 className="text-base md:text-lg font-medium">Perempuan</h3>
-                  <Users className="h-5 w-5 text-purple-600" />
+              <div className="p-4 bg-white rounded-lg shadow-sm">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-base font-medium md:text-lg">Perempuan</h3>
+                  <Users className="w-5 h-5 text-purple-600" />
                 </div>
-                <p className="text-2xl md:text-3xl font-bold text-purple-600 mt-2">
+                <p className="mt-2 text-2xl font-bold text-purple-600 md:text-3xl">
                   {filteredData[filteredData.length - 1].female.toLocaleString()}
                 </p>
               </div>
@@ -196,10 +196,10 @@ const PopulationDashboard = () => {
         )}
 
         {/* Charts */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           {selectedMetrics.total && (
-            <div className="bg-white p-4 rounded-lg shadow-sm">
-              <h3 className="text-base md:text-lg font-medium mb-4">Trend Populasi Total</h3>
+            <div className="p-4 bg-white rounded-lg shadow-sm">
+              <h3 className="mb-4 text-base font-medium md:text-lg">Trend Populasi Total</h3>
               <div className="h-60 md:h-80">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={filteredData}>
@@ -221,8 +221,8 @@ const PopulationDashboard = () => {
           )}
 
           {(selectedMetrics.male || selectedMetrics.female) && (
-            <div className="bg-white p-4 rounded-lg shadow-sm">
-              <h3 className="text-base md:text-lg font-medium mb-4">Distribusi Gender</h3>
+            <div className="p-4 bg-white rounded-lg shadow-sm">
+              <h3 className="mb-4 text-base font-medium md:text-lg">Distribusi Gender</h3>
               <div className="h-60 md:h-80">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={filteredData}>
@@ -245,19 +245,19 @@ const PopulationDashboard = () => {
 
         {/* Additional Stats */}
         {(selectedMetrics.ratio || selectedMetrics.growth) && (
-          <div className="bg-white p-4 rounded-lg shadow-sm">
-            <h3 className="text-base md:text-lg font-medium mb-4">Statistik Tambahan</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="p-4 bg-white rounded-lg shadow-sm">
+            <h3 className="mb-4 text-base font-medium md:text-lg">Statistik Tambahan</h3>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {selectedMetrics.ratio && (
-                <div className="p-4 bg-gray-50 rounded-lg">
+                <div className="p-4 rounded-lg bg-gray-50">
                   <div className="text-sm text-gray-600">Sex Ratio</div>
-                  <div className="text-xl md:text-2xl font-bold text-gray-900">107.43</div>
+                  <div className="text-xl font-bold text-gray-900 md:text-2xl">107.43</div>
                 </div>
               )}
               {selectedMetrics.growth && (
-                <div className="p-4 bg-gray-50 rounded-lg">
+                <div className="p-4 rounded-lg bg-gray-50">
                   <div className="text-sm text-gray-600">Pertumbuhan Penduduk</div>
-                  <div className="text-xl md:text-2xl font-bold text-gray-900">107.43</div>
+                  <div className="text-xl font-bold text-gray-900 md:text-2xl">107.43</div>
                 </div>
               )}
             </div>

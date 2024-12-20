@@ -1,4 +1,3 @@
-import './App.css'
 import PopulationDashboard from './components/dashboard'
 
 function App() {
