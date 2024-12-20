@@ -50,7 +50,7 @@ const PopulationDashboard = () => {
             <h1 className="text-xl font-bold text-gray-900 truncate md:text-3xl">DAG.DIG.DUG.SER</h1>
             <div className="flex items-center gap-4">
               <div className="items-center hidden gap-2 md:flex">
-                <img src="https://sanggaukab.bps.go.id/_next/image?url=%2Fassets%2Flogo-bps.png&w=1080&q=75" alt="Logo" className="h-8 md:h-10" />
+                <img src="images/bps.png" alt="Logo" className="h-8 md:h-10" />
                 <span className="text-sm font-semibold md:text-lg">Kabupaten Sanggau</span>
               </div>
               <button 
